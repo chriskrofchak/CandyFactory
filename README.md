@@ -6,6 +6,10 @@ This is a small code example which uses sockets on `127.0.0.1:8080` to send mess
 
 There are options for a "square" candy, a candy "bar," or a "dozen" pieces of candy. Feel free to walk through the code or run and connect to the server to see what these options do!
 
+#### Usage
+
+You must at *least* compile server.cc (or use `make server`) in order to run the Python tests to verify it works. Otherwise, use `make all` and run `./server`, you can instantiate the Python or C++ clients as you wish or run either file to test it's working.
+
 ### Server
 
 The server is written in C++. I have updated it to be multi-threaded but this is still not going to be anywhere near as performant as it could be. However, solving the [C10K](http://www.kegel.com/c10k.html) problem is not what I sought out to do, so I have left it as is - dispatching a single thread per connection. I have never programmed sockets before, having used Apache Pulsar on a previous internship for message passing, so I've used a sample code, cited, from a Stack Exchange answer. The code wasn't correct so I fixed it, but kept the object-oriented style as it fits well in C++.
@@ -36,4 +40,6 @@ This solution, unfortunately, given I made this example to demonstrate interoper
 
 An alternative would be the library BOOST for C++ which is very popular, and also portable. The drawback with Boost is that it is very large and so for this example was omitted.
 
+#### Overflow 
 
+This is a quick and simple project and so I only use a plain `int`, so if you've figured out what `bar` does - be careful with your inputs! I was actually thinking of writing a big-integer class to handle arbitrarily large integers, but then another design flaw is the buffers are 1024 so I'd run into trouble with reading at that point, and then now you see I've gotten completely off track from the original objective.
