@@ -1,2 +1,8 @@
+# executables
 client
 server
+
+# python venv for the project. Not necessary, but I 
+# was trying to see if I could get Python Intellisense to work, 
+# because it works on my work computer but no such luxuries at home...
+candy-env/
